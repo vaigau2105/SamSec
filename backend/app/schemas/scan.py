@@ -1,11 +1,17 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from typing import List, Optional, Any
 
-class ScanRequest(BaseModel):
-    # We are setting rules: must be at least 3 chars, max 255.
-    target: str = Field(min_length=3, max_length=255)
+class ScanCreate(BaseModel):
+    name: str
+    targets: List[str]
 
-class ScanResponse(BaseModel):
-
+class ScanOut(BaseModel):
+    id: int
+    name: str
+    targets: List[str]
     status: str
-    message: str
-    scan_id: str | None = None 
+    raw_results: Optional[Any] = None
+    result_summary: Optional[Any] = None
+
+    class Config:
+        from_attributes = True

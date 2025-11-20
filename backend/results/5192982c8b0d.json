@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "job_id": "5192982c8b0d",
+    "status": "finished",
+    "created_at": "2025-11-13T19:11:50.361413Z",
+    "targets": [
+      "hackerone.com"
+    ],
+    "started_at": "2025-11-13T19:11:50.361432Z",
+    "finished_at": "2025-11-13T19:12:22.032363Z"
+  },
+  "subfinder": {
+    "hackerone.com": {
+      "results": [
+        "api.hackerone.com",
+        "links.hackerone.com",
+        "mta-sts.managed.hackerone.com",
+        "mta-sts.hackerone.com",
+        "a.ns.hackerone.com",
+        "b.ns.hackerone.com",
+        "info.hackerone.com",
+        "mta-sts.forwarding.hackerone.com",
+        "events.hackerone.com",
+        "www.hackerone.com",
+        "docs.hackerone.com",
+        "design.hackerone.com",
+        "support.hackerone.com",
+        "go.hackerone.com",
+        "gslink.hackerone.com",
+        "websockets.hackerone.com"
+      ],
+      "raw": "{\"host\":\"api.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"digitorus\"}\n{\"host\":\"links.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"mta-sts.managed.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"mta-sts.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"a.ns.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"b.ns.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"info.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"mta-sts.forwarding.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"events.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"www.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"digitorus\"}\n{\"host\":\"docs.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"digitorus\"}\n{\"host\":\"design.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"support.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"go.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"gslink.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"anubis\"}\n{\"host\":\"websockets.hackerone.com\",\"input\":\"hackerone.com\",\"source\":\"crtsh\"}\n",
+      "returncode": 0
+    }
+  },
+  "nuclei": {
+    "api.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "links.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "mta-sts.managed.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "mta-sts.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "a.ns.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "b.ns.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "info.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "mta-sts.forwarding.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "events.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    },
+    "www.hackerone.com": {
+      "results": [],
+      "raw": "flag provided but not defined: -json\n",
+      "returncode": 2
+    }
+  }
+}
