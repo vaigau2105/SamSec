@@ -21,9 +21,34 @@ from pathlib import Path
 from backend.app.api.routes_scan import router as scan_router
 from backend.app.core.config import settings
 
-app = FastAPI(title="SamSec API", version="1.0")
 from fastapi import Request
 from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(
+    title="SamSec API",
+    description="Automated Vulnerability Scanning and Reporting Platform",
+    version="1.0.0"
+)
+
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
@@ -105,10 +130,7 @@ async def run_command(cmd, cwd=None, timeout=180):
     return {"exit": proc.returncode, "stdout": stdout.decode('utf-8', errors='ignore'), "stderr": stderr.decode('utf-8', errors='ignore')}
 
 async def run_scanners(scan_id: str, target_url: str):
-    """
-    Runs subfinder -> dnsx -> naabu -> httpx -> nuclei chain and produces combined JSON report.
-    Requires the CLI tools to be installed and in PATH.
-    """
+
     outdir = REPORTS_DIR / scan_id
     outdir.mkdir(exist_ok=True)
     # 1) subfinder
@@ -386,18 +408,16 @@ import pathlib
 
 FRONTEND_DIR = pathlib.Path(__file__).resolve().parents[2] / "frontend"
 
-# Serve static files (CSS/JS/images)
-app.mount("/assets", StaticFiles(directory=FRONTEND_DIR / "assets"), name="assets")
-
-# Serve the frontend pages:
 @app.get("/", response_class=HTMLResponse)
-def serve_index():
-    return (FRONTEND_DIR / "index.html").read_text()
+def serve_home():
+    return (FRONTEND_DIR / "index.html").read_text(encoding="utf-8")
 
-@app.get("/scans", response_class=HTMLResponse)
-def serve_scans():
-    return (FRONTEND_DIR / "scans.html").read_text()
+
+@app.get("/scan", response_class=HTMLResponse)
+def serve_scan():
+    return (FRONTEND_DIR / "scan.html").read_text(encoding="utf-8")
+
 
 @app.get("/reports", response_class=HTMLResponse)
 def serve_reports():
-    return (FRONTEND_DIR / "reports.html").read_text()
+    return (FRONTEND_DIR / "reports.html").read_text(encoding="utf-8")
