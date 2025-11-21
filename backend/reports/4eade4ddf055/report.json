@@ -1,0 +1,21 @@
+{
+    "scan_id": "4eade4ddf055",
+    "target_url": "https://Hackerone.com",
+    "scan_date": "2025-11-20T22:53:36.915524",
+    "status": "Completed",
+    "critical_count": 1,
+    "high_count": 1,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0,
+    "vulnerabilities": [
+        {
+            "name": "SQL Injection",
+            "severity": "High"
+        },
+        {
+            "name": "XSS",
+            "severity": "Critical"
+        }
+    ]
+}

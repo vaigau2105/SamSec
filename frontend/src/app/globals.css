@@ -1,0 +1,354 @@
+/* ========================================= */
+/*               BASE IMPORTS                */
+/* ========================================= */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+
+/* ========================================= */
+/*                  THEME                    */
+/* ========================================= */
+
+:root {
+  --radius: 0.625rem;
+
+  /* SamSec Brand */
+  --samsec-blue: #3b82f6;
+  --samsec-blue-light: #60a5fa;
+  --samsec-aqua: #38bdf8;
+  --samsec-teal: #2dd4bf;
+
+  /* LIGHT-MODERN SaaS Palette */
+  --surface-1: #1c2432;
+  --surface-1-gradient: linear-gradient(to bottom, #202a3b, #1b2331);
+  --surface-2: #232d3f;
+  --surface-3: #293448;
+
+  --border-1: rgba(255,255,255,0.14);
+  --border-2: rgba(255,255,255,0.07);
+
+  --text-1: #f3f6fb;
+  --text-2: #cdd6e3;
+  --text-3: #9ba8b9;
+
+  --accent-1: var(--samsec-blue);
+  --accent-2: var(--samsec-aqua);
+  --accent-3: var(--samsec-blue-light);
+
+  --gradient-strong: linear-gradient(135deg, #3b82f6, #2563eb);
+  --gradient-hover: linear-gradient(135deg, #60a5fa, #3b82f6);
+
+  --section-divider: rgba(255,255,255,0.05);
+}
+
+
+/* ========================================= */
+/*              GLOBAL STYLING               */
+/* ========================================= */
+
+body {
+  font-family: var(--font-sans);
+  background: var(--surface-1-gradient);
+  color: var(--text-1);
+  letter-spacing: 0.1px;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-1);
+  font-weight: 700;
+}
+
+
+/* ========================================= */
+/*             LAYOUT HELPERS                */
+/* ========================================= */
+
+.page-container {
+  max-width: 1250px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.section {
+  padding-block: 60px;
+}
+
+.section-sm {
+  padding-block: 40px;
+}
+
+.section-divider {
+  height: 1px;
+  margin: 1.5rem 0;
+  background: var(--section-divider);
+}
+
+
+/* ========================================= */
+/*                  NAVBAR                   */
+/* ========================================= */
+
+nav {
+  background: rgba(28,36,50,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+
+/* ========================================= */
+/*                  CARDS                    */
+/* ========================================= */
+
+.app-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.app-card-inner {
+  background: rgba(255,255,255,0.02);
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+
+/* ===== Feature Highlight Cards ===== */
+.card-gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--samsec-aqua),
+    var(--samsec-blue),
+    var(--samsec-teal)
+  );
+}
+
+.card-gradient-inner {
+  background: var(--surface-2);
+  border-radius: inherit;
+  padding: 1.25rem;
+}
+
+
+/* ========================================= */
+/*                   BUTTONS                 */
+/* ========================================= */
+
+.btn {
+  padding: 0.65rem 1.2rem;
+  border-radius: 0.55rem;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--gradient-strong);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.btn-primary:hover {
+  background: var(--gradient-hover);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text-2);
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+
+/* ========================================= */
+/*                   INPUTS                  */
+/* ========================================= */
+
+input, textarea, select {
+  background: var(--surface-3);
+  border: 1px solid var(--border-2);
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  color: var(--text-1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-3);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.25);
+}
+
+
+/* ========================================= */
+/*            TABS (Account / Settings)       */
+/* ========================================= */
+
+.account-tabs {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.account-tabs .tab {
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-3);
+  position: relative;
+  cursor: pointer;
+}
+
+.account-tabs .tab.active {
+  color: var(--accent-2);
+}
+
+.account-tabs .tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--samsec-aqua), var(--samsec-teal));
+}
+
+
+/* ========================================= */
+/*             ACCOUNT WARNING PANEL         */
+/* ========================================= */
+
+.account-action {
+  border: 1px solid rgba(220,38,38,0.3);
+  background: linear-gradient(180deg, rgba(220,38,38,0.1), rgba(220,38,38,0.05));
+  border-radius: 0.85rem;
+  padding: 1.5rem;
+  color: var(--text-1);
+}
+
+
+/* ========================================= */
+/*            HEXAGON BACKGROUND             */
+/* ========================================= */
+
+.hexagon-dark {
+  --hexagon-background: #202a3b;
+  --hexagon-cell: #2b3546;
+  --hexagon-pattern: #334156;
+  --hexagon-highlight: #41516d;
+}
+
+
+/* ========================================= */
+/*                  FOOTER                   */
+/* ========================================= */
+
+footer {
+  margin-top: 40px;
+  padding: 40px 0;
+  background: #1c2432;
+}
+
+footer .bottom {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-2);
+}
+
+
+/* ========================================= */
+/*                ANIMATIONS                 */
+/* ========================================= */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn .22s ease-out;
+}
+
+/* ------------------------------ */
+/*  UNIFIED TAB STYLE (New Scan)  */
+/* ------------------------------ */
+
+.tab-group {
+  display: flex;
+  gap: 2rem;
+  border-bottom: 1px solid var(--border-1);
+  padding-bottom: 0.75rem;
+}
+
+.tab-button {
+  padding-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-3);
+  transition: 0.2s ease;
+}
+
+.tab-button:hover {
+  color: var(--text-1);
+}
+
+.tab-button.active {
+  color: var(--samsec-blue);
+  border-bottom: 2px solid var(--samsec-blue);
+}
+
+
+/* ========================================= */
+/*     API KEY PANEL — Modern SaaS UI        */
+/* ========================================= */
+
+.api-key-panel {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: 0.2s ease;
+}
+
+.api-key-panel:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.10);
+}
+
+.api-key-meta {
+  font-size: 0.75rem;
+  color: var(--text-3);
+}
+
+.api-key-value {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-family: var(--font-mono, ui-monospace);
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.55rem;
+  font-size: 0.82rem;
+  color: var(--text-2);
+}
+
+.api-key-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
