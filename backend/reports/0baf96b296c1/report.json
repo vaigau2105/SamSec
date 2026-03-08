@@ -1,0 +1,53 @@
+{
+    "scan_id": "0baf96b296c1",
+    "target_url": "https://example.com",
+    "scan_date": "2025-12-04T04:39:26.659296",
+    "status": "Completed",
+    "dns_data": {
+        "domain": "example.com",
+        "root_dns": {
+            "A": [
+                "23.192.228.80",
+                "23.215.0.138",
+                "23.220.75.232",
+                "23.215.0.136",
+                "23.192.228.84",
+                "23.220.75.245"
+            ],
+            "AAAA": [
+                "2600:1408:ec00:36::1736:7f31",
+                "2600:1406:bc00:53::b81e:94ce",
+                "2600:1408:ec00:36::1736:7f24",
+                "2600:1406:5e00:6::17ce:bc12",
+                "2600:1406:5e00:6::17ce:bc1b",
+                "2600:1406:bc00:53::b81e:94c8"
+            ],
+            "NS": [
+                "b.iana-servers.net.",
+                "a.iana-servers.net."
+            ],
+            "MX": [
+                "0 ."
+            ],
+            "TXT": [
+                "\"v=spf1 -all\"",
+                "\"_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9\""
+            ],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "subdomains": [
+        "example.com"
+    ],
+    "alive_hosts": [],
+    "open_ports": {},
+    "vulnerabilities": [],
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0
+}

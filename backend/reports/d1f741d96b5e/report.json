@@ -1,0 +1,170 @@
+{
+    "scan_id": "d1f741d96b5e",
+    "target_url": "https://hackerone.com",
+    "scan_date": "2025-12-04T01:56:28.955640",
+    "status": "Completed",
+    "dns_data": {
+        "domain": "hackerone.com",
+        "root_dns": {
+            "A": [],
+            "AAAA": [
+                "2a06:98c1:3106::ac40:972a",
+                "2606:4700:440a::6812:24d6"
+            ],
+            "NS": [
+                "a.ns.hackerone.com.",
+                "b.ns.hackerone.com."
+            ],
+            "MX": [
+                "20 alt1.aspmx.l.google.com.",
+                "10 aspmx.l.google.com.",
+                "30 aspmx2.googlemail.com.",
+                "30 aspmx3.googlemail.com.",
+                "20 alt2.aspmx.l.google.com."
+            ],
+            "TXT": [
+                "\"cloudpiercer-verification=32e7eea9d2f153b176b182626588bc77\"",
+                "\"zapier-domain-verification-challenge=d1be5c1b-f415-418f-9542-abc14d8321af\"",
+                "\"v=spf1 include:_spf.google.com include:amazonses.com include:mail.zendesk.com include:spf.mail.intercom.io include:mktomail.com include:registrarmail.net -all\"",
+                "\"citrix-verification-code=9c920630-2d05-4154-b72a-1021665d3b58\"",
+                "\"slack-domain-verification=cQndsOjWj4XDM9icHSNlvtrh3r1jfQMQTfhDNxiz\"",
+                "\"70gn9hp69jzpn3nkp42r8n9jwwtd1d70\"",
+                "\"protonmail-verification=f3b0af7c5614dbdf82c5bdebc6014593c05b92f6\"",
+                "\"docusign=848c7864-3a91-42aa-8e30-2671086f7516\"",
+                "\"h1-domain-verification=LDEQA8SYNEMgdUN1kfMtjFNptDJcnjKN8LxNHCN3JNvT5Fxo\"",
+                "\"box-domain-verification=8b89b955ef91d29f746acc1a7147aa9490922028fcf458e98b62aa769136d99b\"",
+                "\"_56ra2mupvxu61g49yhns1uxv031fxcy\"",
+                "\"stripe-verification=74802599834dfbfc093c8352686c992d22e7b20a6fdcfceac2e6a846074d6936\"",
+                "\"openai-domain-verification=dv-8UsaxQU6vJQfWNS8d3FBK4et\"",
+                "\"google-site-verification=iKe1wvhRzxTmexGrBcrDplrCvBL-PL2Mgf4VZQAfYNs\"",
+                "\"apple-domain-verification=YOO9EuQfVRiqtbWi\"",
+                "\"google-site-verification=3LAOq3Z_u6zVOJHlZW0I7tuQpCPvZHC9JBZMk3e20mk\"",
+                "\"4b7570f2564f4074b42872e1d78668ad\"",
+                "\"wayback=verification for request #673161\"",
+                "\"ethiack-verification=efd57ccd9a94d6363d89e0a992e872c6ff651a41d1091228978021da750ac30dbb01c2ae6d65e0cf9d7edfbe198aef554577505a50a736d1d0dbb6b17282710b\"",
+                "\"stripe-verification=20c821f6e4dfc5ee358ea9b8e4635cf062a2acac5751f8004d23b122f1cb5ac2\"",
+                "\"jetbrains-domain-verification=69ifho5wgkblhail93kc83elv\"",
+                "\"clayton-domain-verification=d21920d13f0a60c931f46d440f6c87526f656b0377\"",
+                "\"drift-domain-verification=18fef5450d713c159ad9f6309fa338d298c11edd56fb22e343d758fb5f58437f\"",
+                "\"onetrust-domain-verification=0be23834ba1d435eb1748ba6b36d8b0c\"",
+                "\"canva-site-verification=RY1pq8pQpGqV1RdvvgatQA\"",
+                "\"MS=ms75772789\"",
+                "\"ZOOM_verify_pzZpSwKqRx6pAD9lLkSl5g\"",
+                "\"atlassian-domain-verification=JpJ4g3munTo9KsuR3Elcdpn97c+KQV7KDjj2YmE+ULiWhGlcfA5f1ivoC0W2puQk\"",
+                "\"google-site-verification=kOO_QjqFZ7fbwXaF0PiMcK2OMQL5nTVBiM21SsO9Olk\"",
+                "\"google-site-verification=mKdqQzjtY7X20BzUFnhAmFU2pmtFJ_Zie_S22FiwubA\"",
+                "\"adobe-idp-site-verification=5d77b0274800290cf193145126595b14308358f46dfe90eba5e298f99d32d2fc\"",
+                "\"monday-com-verification=uj2Ko666o6C_Gc_vbCiQ6n7ruARZpX0U3I0bocalW60\"",
+                "\"facebook-domain-verification=niq4ke9m7djq4jt36f02t093aig8a5\"",
+                "\"0q8zpfvc64swgyy9wwwrjl7vgwrfffbf\"",
+                "\"wework-site-verification=e0czKzmn7ul5Cr9A\"",
+                "\"c06l6z7hp4vk6bzpqb1j6b8w1m64nf84\""
+            ],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "subdomains": [
+        "links.hackerone.com",
+        "go.hackerone.com",
+        "gslink.hackerone.com",
+        "api.hackerone.com",
+        "a.ns.hackerone.com",
+        "b.ns.hackerone.com",
+        "support.hackerone.com",
+        "docs.hackerone.com",
+        "mta-sts.forwarding.hackerone.com",
+        "events.hackerone.com",
+        "www.hackerone.com",
+        "info.hackerone.com",
+        "mta-sts.managed.hackerone.com",
+        "mta-sts.hackerone.com",
+        "design.hackerone.com"
+    ],
+    "alive_hosts": [
+        "gslink.hackerone.com",
+        "api.hackerone.com",
+        "support.hackerone.com",
+        "docs.hackerone.com",
+        "mta-sts.forwarding.hackerone.com",
+        "www.hackerone.com",
+        "mta-sts.managed.hackerone.com",
+        "mta-sts.hackerone.com"
+    ],
+    "open_ports": {
+        "gslink.hackerone.com": {
+            "ports": [
+                443,
+                80
+            ],
+            "raw": "{\"host\":\"gslink.hackerone.com\",\"ip\":\"65.9.175.107\",\"timestamp\":\"2025-12-04T01:54:23.902303026Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"gslink.hackerone.com\",\"ip\":\"65.9.175.107\",\"timestamp\":\"2025-12-04T01:54:23.902303026Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "api.hackerone.com": {
+            "ports": [
+                80,
+                443,
+                8443,
+                8080
+            ],
+            "raw": "{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:54:42.301978359Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:54:42.301978359Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:54:42.301978359Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:54:42.301978359Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "support.hackerone.com": {
+            "ports": [
+                443,
+                80,
+                8443,
+                8080
+            ],
+            "raw": "{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T01:55:00.812931945Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T01:55:00.812931945Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T01:55:00.812931945Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T01:55:00.812931945Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "docs.hackerone.com": {
+            "ports": [
+                443,
+                8080,
+                8443,
+                80
+            ],
+            "raw": "{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:19.326282923Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:19.326282923Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:19.326282923Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:19.326282923Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "mta-sts.forwarding.hackerone.com": {
+            "ports": [
+                443,
+                80
+            ],
+            "raw": "{\"host\":\"mta-sts.forwarding.hackerone.com\",\"ip\":\"185.199.108.153\",\"timestamp\":\"2025-12-04T01:55:37.690076476Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"mta-sts.forwarding.hackerone.com\",\"ip\":\"185.199.108.153\",\"timestamp\":\"2025-12-04T01:55:37.690076476Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "www.hackerone.com": {
+            "ports": [
+                8080,
+                80,
+                443,
+                8443
+            ],
+            "raw": "{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:55.926191483Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:55.926191483Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:55.926191483Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T01:55:55.926191483Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "mta-sts.managed.hackerone.com": {
+            "ports": [],
+            "raw": "",
+            "rc": 1
+        },
+        "mta-sts.hackerone.com": {
+            "ports": [],
+            "raw": "",
+            "rc": 1
+        }
+    },
+    "vulnerabilities": [],
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0
+}

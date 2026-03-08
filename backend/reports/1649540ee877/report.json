@@ -1,0 +1,65 @@
+{
+    "scan_id": "1649540ee877",
+    "target_url": "https://example.com",
+    "scan_date": "2025-12-04T04:38:20.099744",
+    "status": "Completed",
+    "dns_data": {
+        "domain": "example.com",
+        "root_dns": {
+            "A": [],
+            "AAAA": [],
+            "NS": [],
+            "MX": [
+                "0 ."
+            ],
+            "TXT": [
+                "\"_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9\"",
+                "\"v=spf1 -all\""
+            ],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "subdomains": [
+        "sasha1703-201357.example.com",
+        "frvdc777.example.com",
+        "gerbulov.example.com",
+        "digitalteamservice236.example.com",
+        "alexpigs679.example.com",
+        "tomotofree.example.com",
+        "cas.example.com",
+        "nik31.adv.example.com",
+        "533440.example.com",
+        "azhukovets12.example.com",
+        "wefwefwfewefwef124.example.com",
+        "alexpigs495.example.com",
+        "geofaller49.example.com",
+        "69.48.134.109.colo.example.com",
+        "dotrupeucropeu-5240.example.com",
+        "sum182.example.com",
+        "lipidguxd43.example.com",
+        "alexfrost84.example.com",
+        "alpha18dog28.example.com",
+        "69.48.134.9.static.example.com",
+        "yatzencko4.dan.example.com",
+        "kirill93211.example.com",
+        "a99ghz999.3.example.com",
+        "mirnyjleha893.example.com",
+        "a00205206424.example.com",
+        "vladm1996.example.com",
+        "anmoparpi1988.example.com",
+        "ringneo159.example.com",
+        "69.48.134.22.static.example.com",
+        "maxroyalls3.example.com"
+    ],
+    "alive_hosts": [],
+    "open_ports": {},
+    "vulnerabilities": [],
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0
+}

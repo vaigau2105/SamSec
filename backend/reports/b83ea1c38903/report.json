@@ -1,0 +1,127 @@
+{
+    "scan_id": "b83ea1c38903",
+    "target_url": "https://hackerone.com",
+    "scan_date": "2025-12-04T00:48:19.197954",
+    "status": "Completed",
+    "dns_data": {
+        "domain": "https://hackerone.com",
+        "root_dns": {
+            "A": [],
+            "AAAA": [],
+            "NS": [],
+            "MX": [],
+            "TXT": [],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "subdomains": [
+        "api.hackerone.com",
+        "a.ns.hackerone.com",
+        "b.ns.hackerone.com",
+        "links.hackerone.com",
+        "mta-sts.managed.hackerone.com",
+        "gslink.hackerone.com",
+        "design.hackerone.com",
+        "www.hackerone.com",
+        "support.hackerone.com",
+        "mta-sts.hackerone.com",
+        "go.hackerone.com",
+        "events.hackerone.com",
+        "docs.hackerone.com",
+        "info.hackerone.com",
+        "mta-sts.forwarding.hackerone.com"
+    ],
+    "alive_hosts": [
+        "api.hackerone.com",
+        "mta-sts.managed.hackerone.com",
+        "gslink.hackerone.com",
+        "www.hackerone.com",
+        "support.hackerone.com",
+        "mta-sts.hackerone.com",
+        "docs.hackerone.com",
+        "mta-sts.forwarding.hackerone.com"
+    ],
+    "open_ports": {
+        "api.hackerone.com": {
+            "ports": [
+                80,
+                443,
+                8080,
+                8443
+            ],
+            "raw": "{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:46:07.597186829Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:46:07.597186829Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:46:07.597186829Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"api.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:46:07.597186829Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "mta-sts.managed.hackerone.com": {
+            "ports": [
+                80,
+                443
+            ],
+            "raw": "{\"host\":\"mta-sts.managed.hackerone.com\",\"ip\":\"185.199.108.153\",\"timestamp\":\"2025-12-04T00:46:26.153672033Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"mta-sts.managed.hackerone.com\",\"ip\":\"185.199.108.153\",\"timestamp\":\"2025-12-04T00:46:26.153672033Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "gslink.hackerone.com": {
+            "ports": [
+                80,
+                443
+            ],
+            "raw": "{\"host\":\"gslink.hackerone.com\",\"ip\":\"18.66.63.96\",\"timestamp\":\"2025-12-04T00:46:44.438389903Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"gslink.hackerone.com\",\"ip\":\"18.66.63.96\",\"timestamp\":\"2025-12-04T00:46:44.438389903Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "www.hackerone.com": {
+            "ports": [
+                80,
+                8080,
+                8443,
+                443
+            ],
+            "raw": "{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:02.946129808Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:02.946129808Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:02.946129808Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"www.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:02.946129808Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "support.hackerone.com": {
+            "ports": [
+                443,
+                8080,
+                8443,
+                80
+            ],
+            "raw": "{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T00:47:21.404697076Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T00:47:21.404697076Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T00:47:21.404697076Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"support.hackerone.com\",\"ip\":\"172.66.0.145\",\"timestamp\":\"2025-12-04T00:47:21.404697076Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "mta-sts.hackerone.com": {
+            "ports": [
+                443,
+                80
+            ],
+            "raw": "{\"host\":\"mta-sts.hackerone.com\",\"ip\":\"185.199.109.153\",\"timestamp\":\"2025-12-04T00:47:39.563196847Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"mta-sts.hackerone.com\",\"ip\":\"185.199.109.153\",\"timestamp\":\"2025-12-04T00:47:39.563196847Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "docs.hackerone.com": {
+            "ports": [
+                8443,
+                8080,
+                443,
+                80
+            ],
+            "raw": "{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:57.788133695Z\",\"port\":8443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:57.788133695Z\",\"port\":8080,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:57.788133695Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"docs.hackerone.com\",\"ip\":\"104.18.36.214\",\"timestamp\":\"2025-12-04T00:47:57.788133695Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        },
+        "mta-sts.forwarding.hackerone.com": {
+            "ports": [
+                80,
+                443
+            ],
+            "raw": "{\"host\":\"mta-sts.forwarding.hackerone.com\",\"ip\":\"185.199.111.153\",\"timestamp\":\"2025-12-04T00:48:16.153450952Z\",\"port\":80,\"protocol\":\"tcp\",\"tls\":false}\n{\"host\":\"mta-sts.forwarding.hackerone.com\",\"ip\":\"185.199.111.153\",\"timestamp\":\"2025-12-04T00:48:16.153450952Z\",\"port\":443,\"protocol\":\"tcp\",\"tls\":false}\n",
+            "rc": 0
+        }
+    },
+    "vulnerabilities": [],
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0
+}
