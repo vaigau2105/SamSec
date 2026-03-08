@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "C:\Users\Vaish\OneDrive\Desktop\Projects\SamSec\backend\app\services\pipeline.py", line 63, in _scan_worker
-    vulnerabilities = result.get("vulnerabilities", [])
-                      ^^^^^^^^^^
-AttributeError: 'coroutine' object has no attribute 'get'
