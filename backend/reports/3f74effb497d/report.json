@@ -1,0 +1,235 @@
+{
+    "scan_id": "3f74effb497d",
+    "target_url": "http://php.testsparker.com",
+    "scan_date": "2026-03-14T01:51:59.547942",
+    "status": "Completed",
+    "subdomains": [
+        "php.testsparker.com"
+    ],
+    "alive_hosts": [
+        "php.testsparker.com"
+    ],
+    "open_ports": [],
+    "dns_data": {
+        "domain": "php.testsparker.com",
+        "root_dns": {
+            "A": [
+                "107.20.213.223"
+            ],
+            "AAAA": [],
+            "NS": [],
+            "MX": [],
+            "TXT": [],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "vulnerabilities": [
+        {
+            "name": "Missing Security Header: strict-transport-security",
+            "severity": "Medium",
+            "description": "The HTTP response is missing the strict-transport-security security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the strict-transport-security header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: content-security-policy",
+            "severity": "Medium",
+            "description": "The HTTP response is missing the content-security-policy security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the content-security-policy header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: x-frame-options",
+            "severity": "Medium",
+            "description": "The HTTP response is missing the x-frame-options security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the x-frame-options header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: x-content-type-options",
+            "severity": "Low",
+            "description": "The HTTP response is missing the x-content-type-options security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the x-content-type-options header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: referrer-policy",
+            "severity": "Low",
+            "description": "The HTTP response is missing the referrer-policy security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the referrer-policy header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: permissions-policy",
+            "severity": "Low",
+            "description": "The HTTP response is missing the permissions-policy security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the permissions-policy header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: x-xss-protection",
+            "severity": "Low",
+            "description": "The HTTP response is missing the x-xss-protection security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the x-xss-protection header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "PHPinfo Page - Detect",
+            "severity": "Low",
+            "description": "PHPinfo page was detected. The output of the phpinfo() command can reveal sensitive and detailed PHP environment information.\n",
+            "cve_ids": [],
+            "remediation": "Remove PHP Info pages from publicly accessible sites, or restrict access to authorized users only.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Apache mod_negotiation - Pseudo Directory Listing",
+            "severity": "Low",
+            "description": "Detected Apache server with mod_negotiation and MultiViews enabled, exposing a pseudo directory listing when invalid Accept headers are sent to extensionless filenames.\n",
+            "cve_ids": [],
+            "remediation": "Address in next maintenance window.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Drupal Directory Listing",
+            "severity": "Low",
+            "description": "Detects enabled directory listing on Drupal installations that may expose sensitive files and directory structures.",
+            "cve_ids": [],
+            "remediation": "Address in next maintenance window.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing HSTS Header",
+            "severity": "Medium",
+            "description": "The Strict-Transport-Security header is not set, allowing downgrade attacks.",
+            "cve_ids": [],
+            "remediation": "Add: Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing X-Frame-Options",
+            "severity": "Medium",
+            "description": "Page can be embedded in iframes, enabling clickjacking attacks.",
+            "cve_ids": [],
+            "remediation": "Add: X-Frame-Options: DENY or SAMEORIGIN",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing X-Content-Type-Options",
+            "severity": "Low",
+            "description": "Browser may MIME-sniff responses, enabling content injection.",
+            "cve_ids": [],
+            "remediation": "Add: X-Content-Type-Options: nosniff",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Content-Security-Policy",
+            "severity": "Medium",
+            "description": "No CSP header detected, increasing XSS attack surface.",
+            "cve_ids": [],
+            "remediation": "Implement a restrictive Content-Security-Policy header.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Referrer-Policy",
+            "severity": "Low",
+            "description": "Browser may leak URL data in Referer headers.",
+            "cve_ids": [],
+            "remediation": "Add: Referrer-Policy: strict-origin-when-cross-origin",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Default Credentials Accepted",
+            "severity": "Critical",
+            "description": "Login succeeded with default credentials: admin/admin",
+            "cve_ids": [],
+            "remediation": "Change all default credentials immediately. Enforce strong password policy.",
+            "target": "http://php.testsparker.com",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        }
+    ],
+    "summary": {
+        "Critical": 1,
+        "High": 0,
+        "Medium": 6,
+        "Low": 9,
+        "Info": 0
+    },
+    "critical_count": 1,
+    "high_count": 0,
+    "medium_count": 6,
+    "low_count": 9,
+    "info_count": 0
+}

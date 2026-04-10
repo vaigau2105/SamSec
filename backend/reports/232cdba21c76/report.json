@@ -1,0 +1,44 @@
+{
+    "scan_id": "232cdba21c76",
+    "target_url": "http://testphp.vulnweb.com",
+    "scan_date": "2026-03-14T03:04:26.552428",
+    "status": "Completed",
+    "subdomains": [
+        "testphp.vulnweb.com"
+    ],
+    "alive_hosts": [
+        "http://testphp.vulnweb.com"
+    ],
+    "open_ports": [],
+    "dns_data": {
+        "domain": "testphp.vulnweb.com",
+        "root_dns": {
+            "A": [
+                "44.228.249.3"
+            ],
+            "AAAA": [],
+            "NS": [],
+            "MX": [],
+            "TXT": [
+                "\"google-site-verification:toEctYsulNIxgraKk7H3z58PCyz2IOCc36pIupEPmYQ\""
+            ],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "vulnerabilities": [],
+    "summary": {
+        "Critical": 0,
+        "High": 0,
+        "Medium": 0,
+        "Low": 0,
+        "Info": 0
+    },
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0
+}

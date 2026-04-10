@@ -1,0 +1,50 @@
+version: "3.9"
+
+# =============================================================
+#  SamSec — docker compose
+#
+#  Start:   docker compose up --build
+#  Stop:    docker compose down
+#  Logs:    docker compose logs -f
+#  Rebuild: docker compose up --build --force-recreate
+# =============================================================
+
+services:
+
+  # ── FastAPI backend + all security tools ───────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: samsec-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - SAMSEC_ENV=docker          # tells tool_runner.py to NOT use wsl prefix
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Reports persist on your machine even if container is rebuilt
+      - ./backend/reports:/app/backend/reports
+    networks:
+      - samsec
+
+  # ── Next.js frontend ───────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: samsec-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - samsec
+
+networks:
+  samsec:
+    driver: bridge

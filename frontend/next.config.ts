@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  // Required for Docker — copies only what's needed to run
+  output: "standalone",
+
+  // Suppress hydration warnings from browser extensions
+  reactStrictMode: true,
 };
 
 export default nextConfig;

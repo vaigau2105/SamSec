@@ -1,0 +1,197 @@
+{
+    "scan_id": "6e7eef4a397b",
+    "target_url": "https://demo.owasp-juice.shop/#/",
+    "scan_date": "2026-03-14T03:12:44.168552",
+    "status": "Completed",
+    "subdomains": [
+        "demo.owasp-juice.shop/#"
+    ],
+    "alive_hosts": [
+        "https://demo.owasp-juice.shop/"
+    ],
+    "open_ports": [],
+    "dns_data": {
+        "domain": "demo.owasp-juice.shop/#",
+        "root_dns": {
+            "A": [],
+            "AAAA": [],
+            "NS": [],
+            "MX": [],
+            "TXT": [],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "vulnerabilities": [
+        {
+            "name": "Missing Security Header: strict-transport-security",
+            "severity": "Medium",
+            "description": "The HTTP response is missing the strict-transport-security security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the strict-transport-security header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: content-security-policy",
+            "severity": "Medium",
+            "description": "The HTTP response is missing the content-security-policy security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the content-security-policy header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: x-frame-options",
+            "severity": "Medium",
+            "description": "The HTTP response is missing the x-frame-options security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the x-frame-options header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: x-content-type-options",
+            "severity": "Low",
+            "description": "The HTTP response is missing the x-content-type-options security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the x-content-type-options header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: referrer-policy",
+            "severity": "Low",
+            "description": "The HTTP response is missing the referrer-policy security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the referrer-policy header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: permissions-policy",
+            "severity": "Low",
+            "description": "The HTTP response is missing the permissions-policy security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the permissions-policy header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Security Header: x-xss-protection",
+            "severity": "Low",
+            "description": "The HTTP response is missing the x-xss-protection security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the x-xss-protection header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "HTTP Missing Security Headers",
+            "severity": "Info",
+            "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "FingerprintHub Technology Fingerprint",
+            "severity": "Info",
+            "description": "FingerprintHub Technology Fingerprint tests run in nuclei.",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "OWASP Juice Shop",
+            "severity": "Info",
+            "description": "",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing HSTS Header",
+            "severity": "Medium",
+            "description": "The Strict-Transport-Security header is not set, allowing downgrade attacks.",
+            "cve_ids": [],
+            "remediation": "Add: Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Content-Security-Policy",
+            "severity": "Medium",
+            "description": "No CSP header detected, increasing XSS attack surface.",
+            "cve_ids": [],
+            "remediation": "Implement a restrictive Content-Security-Policy header.",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        },
+        {
+            "name": "Missing Referrer-Policy",
+            "severity": "Low",
+            "description": "Browser may leak URL data in Referer headers.",
+            "cve_ids": [],
+            "remediation": "Add: Referrer-Policy: strict-origin-when-cross-origin",
+            "target": "https://demo.owasp-juice.shop/#/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null
+        }
+    ],
+    "summary": {
+        "Critical": 0,
+        "High": 0,
+        "Medium": 5,
+        "Low": 5,
+        "Info": 3
+    },
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 5,
+    "low_count": 5,
+    "info_count": 3
+}

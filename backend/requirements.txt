@@ -1,18 +1,27 @@
-fastapi==0.95.2
-uvicorn[standard]==0.22.0
-sqlalchemy==2.0.22
-alembic==1.11.1
-psycopg2-binary==2.9.7
-pydantic==1.10.11
-redis==4.6.0
-rq==1.11.0
-python-dotenv==1.0.0
-httpx==0.24.1
-python-multipart==0.0.6
-passlib[bcrypt]==1.7.5
-pyjwt==2.8.0
-aiofiles==23.1.0
-jinja2
-reportlab
-requests
-urllib3
+# SamSec Backend Dependencies
+
+# API framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.8.2
+
+# HTTP requests (used by active_scanner, fingerprint)
+requests==2.32.3
+urllib3==2.2.2
+
+# DNS
+dnspython==2.6.1
+
+# Async file I/O
+aiofiles==23.2.1
+
+# Auth
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+
+# Env vars
+python-dotenv==1.0.1
+
+# Reports
+reportlab==4.2.2

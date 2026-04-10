@@ -1,0 +1,68 @@
+# =============================================================
+#  SamSec — Backend Dockerfile
+#  Ubuntu 22.04 + Go tools + Python 3.11
+# =============================================================
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV SAMSEC_ENV=docker
+
+# ── System packages ──────────────────────────────────────────
+RUN apt-get update && apt-get install -y \
+    python3.11 \
+    python3.11-venv \
+    python3-pip \
+    curl \
+    wget \
+    git \
+    dnsutils \
+    ca-certificates \
+    libpcap-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Default python → 3.11
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 \
+ && update-alternatives --install /usr/bin/python  python  /usr/bin/python3.11 1
+
+# ── Go 1.22 ──────────────────────────────────────────────────
+RUN wget -q https://go.dev/dl/go1.22.3.linux-amd64.tar.gz \
+ && tar -C /usr/local -xzf go1.22.3.linux-amd64.tar.gz \
+ && rm go1.22.3.linux-amd64.tar.gz
+
+ENV PATH="/usr/local/go/bin:/root/go/bin:${PATH}"
+ENV GOPATH="/root/go"
+
+# ── ProjectDiscovery security tools ──────────────────────────
+# Each on separate RUN so Docker cache is granular
+# (if one fails during dev you don't rebuild everything)
+RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest 2>&1 | tail -1
+RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest             2>&1 | tail -1
+RUN go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest          2>&1 | tail -1
+RUN go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest        2>&1 | tail -1
+RUN go install -v github.com/projectdiscovery/katana/cmd/katana@latest           2>&1 | tail -1
+
+# Download nuclei templates on build (so first scan isn't slow)
+RUN nuclei -update-templates -silent || true
+
+# ── Python dependencies ──────────────────────────────────────
+WORKDIR /app
+
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip \
+ && pip install --no-cache-dir -r requirements.txt
+
+# ── App source ───────────────────────────────────────────────
+COPY backend/ ./backend/
+
+RUN mkdir -p /app/backend/reports
+
+EXPOSE 8000
+
+CMD ["uvicorn", "backend.app.main:app", \
+     "--host", "0.0.0.0", \
+     "--port", "8000", \
+     "--workers", "2", \
+     "--log-level", "info"]
