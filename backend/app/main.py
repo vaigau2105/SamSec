@@ -20,6 +20,9 @@ from backend.app.services.pipeline import (
     run_single_scan_in_process,
 )
 
+from backend.app.api.mitre_routes import router as mitre_router
+app.include_router(mitre_router)
+
 
 # ─────────────────────────────────────────────
 #  App
@@ -238,9 +241,9 @@ def get_report(scan_id: str):
 def list_scans():
     scans = []
     for scan_id, data in TARGETS_INDEX.items():
-        # Sync live status from Manager dict if available
         live = SCAN_STATUS.get(scan_id, {})
         status = live.get("status") or data.get("status", "Unknown")
+        summary = live.get("summary") or data.get("summary", {})
 
         scans.append({
             "scan_id":     scan_id,
@@ -249,6 +252,7 @@ def list_scans():
             "status":      status,
             "scan_date":   data["scan_date"],
             "progress":    live.get("progress", 100 if status == "Completed" else 0),
+            "summary":     summary,
         })
 
     return {"total": len(scans), "scans": scans}

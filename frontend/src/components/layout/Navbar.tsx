@@ -27,7 +27,6 @@ export default function Navbar() {
                     <div className="flex items-center gap-3">
                         <div className="relative w-10 h-10 flex items-center justify-center">
                             <div className="absolute inset-0 rounded-xl bg-[var(--samsec-blue)]/25 blur-xl opacity-80"></div>
-
                             <Image
                                 src="/samsec.png"
                                 width={48}
@@ -37,31 +36,38 @@ export default function Navbar() {
                                 className="relative z-10 w-10 h-10 object-contain drop-shadow-[0_0_12px_var(--samsec-glow-1)]"
                             />
                         </div>
-
                         <span className="text-xl font-semibold text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.6)]">
                             SamSec
                         </span>
                     </div>
 
                     {/* Desktop Nav Links */}
-                    <div className="hidden md:flex gap-8">
+                    <div className="hidden md:flex gap-6">
                         {[
-                            ["Home", "/"],
-                            ["Dashboard", "/dashboard"],
-                            ["New Scan", "/new-scan"],
-                            ["Reports", "/reports"],
-                            ["Account", "/account"],
+                            ["Home",       "/"],
+                            ["Dashboard",  "/dashboard"],
+                            ["New Scan",   "/new-scan"],
+                            ["Reports",    "/reports"],
+                            ["MITRE ATT&CK", "/mitre"],
+                            ["Account",    "/account"],
                         ].map(([label, href]) => (
                             <Link
                                 key={label}
                                 href={href}
-                                className="
-                                    text-slate-300 text-sm font-medium
-                                    hover:text-[var(--samsec-aqua)]
-                                    transition-colors duration-200
-                                "
+                                className={`
+                                    text-sm font-medium transition-colors duration-200
+                                    ${label === "MITRE ATT&CK"
+                                        ? "text-violet-400 hover:text-violet-300"
+                                        : "text-slate-300 hover:text-[var(--samsec-aqua)]"
+                                    }
+                                `}
                             >
-                                {label}
+                                {label === "MITRE ATT&CK" ? (
+                                    <span className="flex items-center gap-1.5">
+                                        <span className="text-xs">🛡️</span>
+                                        {label}
+                                    </span>
+                                ) : label}
                             </Link>
                         ))}
                     </div>
@@ -75,14 +81,10 @@ export default function Navbar() {
                                     document.dispatchEvent(new CustomEvent("auth-set-mode", { detail: "login" }));
                                 }, 10);
                             }}
-                            className="
-        text-slate-300 text-sm font-medium
-        hover:text-white transition
-    "
+                            className="text-slate-300 text-sm font-medium hover:text-white transition"
                         >
                             Log In
                         </button>
-
                         <button
                             onClick={() => {
                                 setAuthOpen(true);
@@ -91,15 +93,14 @@ export default function Navbar() {
                                 }, 10);
                             }}
                             className="
-        px-4 py-2 text-sm font-semibold rounded-lg
-        bg-gradient-to-r from-[var(--samsec-blue)] to-[var(--samsec-aqua)]
-        text-black shadow-[0_0_15px_var(--samsec-glow-1)]
-        hover:opacity-90 transition
-    "
+                                px-4 py-2 text-sm font-semibold rounded-lg
+                                bg-gradient-to-r from-[var(--samsec-blue)] to-[var(--samsec-aqua)]
+                                text-black shadow-[0_0_15px_var(--samsec-glow-1)]
+                                hover:opacity-90 transition
+                            "
                         >
                             Sign Up
                         </button>
-
                     </div>
 
                     {/* Mobile Icon */}
@@ -111,13 +112,11 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* MODALS MUST BE OUTSIDE NAVBAR */}
             <AuthModal
                 open={authOpen}
                 onClose={() => setAuthOpen(false)}
                 openForgot={() => setForgotOpen(true)}
             />
-
             <ForgotPasswordModal
                 open={forgotOpen}
                 onClose={() => setForgotOpen(false)}

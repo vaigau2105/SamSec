@@ -1,8 +1,11 @@
 # backend/app/services/pipeline.py
 """
-SamSec Parallel Scan Pipeline
-Uses Python multiprocessing — each asset gets its own process (true parallelism).
-Handles both sync and async run_full_scan safely inside child processes.
+SamSec Parallel Scan Pipeline — v4 (MITRE ATT&CK integrated)
+Each scan now:
+  1. Runs the full scanner (subfinder / httpx / naabu / nuclei / active)
+  2. Enriches every finding with ATT&CK technique mappings
+  3. Generates an ATT&CK Navigator layer JSON alongside report.json
+  4. Calculates tactic/technique coverage stats stored in the report
 """
 
 import asyncio
@@ -27,38 +30,23 @@ SCAN_TIMEOUT = 600  # seconds
 # ──────────────────────────────────────────────────────────────
 
 def _call_run_full_scan(domain: str) -> Dict[str, Any]:
-    """
-    Import and call run_full_scan inside the child process.
-    If it's a coroutine function (async def), run it with asyncio.run().
-    If it's a regular function, call it directly.
-    """
-    # Import here — inside child process — to avoid pickling issues
-    from backend.app.services.scanner import run_full_scan  # noqa
-
+    from backend.app.services.scanner import run_full_scan
     result = run_full_scan(domain)
-
-    # Handle async scanner
     if inspect.iscoroutine(result):
         result = asyncio.run(result)
-
     return result
 
 
 # ──────────────────────────────────────────────────────────────
-#  Per-asset worker  (top-level → picklable)
+#  Per-asset worker
 # ──────────────────────────────────────────────────────────────
 
 def _scan_worker(args: tuple) -> Dict[str, Any]:
-    """
-    Runs entirely in a child process.
-    args = (scan_id, target_url, shared_status_dict)
-    """
     scan_id, target_url, shared_status = args
     pid = current_process().pid
 
     print(f"[PID {pid}] 🚀 Scanning {scan_id} → {target_url}")
 
-    # ── Mark as Running ──
     shared_status[scan_id] = {
         "status":     "Running",
         "progress":   5,
@@ -79,37 +67,29 @@ def _scan_worker(args: tuple) -> Dict[str, Any]:
 
     try:
         update(10, "Running subfinder / httpx / naabu / nuclei")
-
-        # ── THE FIX: use helper that handles sync & async ──
         result = _call_run_full_scan(target_url)
 
-        # Sanity check
         if result is None:
-            raise RuntimeError("run_full_scan returned None — check scanner.py for errors")
+            raise RuntimeError("run_full_scan returned None")
         if inspect.iscoroutine(result):
-            raise RuntimeError("run_full_scan still returned a coroutine — asyncio.run() failed")
+            raise RuntimeError("run_full_scan still returned a coroutine")
 
-        update(80, "Normalising vulnerabilities")
+        update(70, "Normalising vulnerabilities")
 
         # ── Normalise nuclei vuln objects → flat schema ──
-        raw_vulns: List[Dict] = result.get("vulnerabilities", [])
+        raw_vulns:  List[Dict] = result.get("vulnerabilities", [])
         normalised: List[Dict] = []
 
         for v in raw_vulns:
             if not isinstance(v, dict):
                 continue
-
-            info = v.get("info", {}) if isinstance(v.get("info"), dict) else {}
-
-            classification = info.get("classification", {})
-            if not isinstance(classification, dict):
-                classification = {}
-
-            cve_ids: List[str] = classification.get("cve-id") or []
+            info           = v.get("info", {}) if isinstance(v.get("info"), dict) else {}
+            classification = info.get("classification", {}) if isinstance(info.get("classification"), dict) else {}
+            cve_ids:       List[str] = classification.get("cve-id") or []
             if isinstance(cve_ids, str):
                 cve_ids = [cve_ids]
 
-            remediation: str = (
+            remediation = (
                 info.get("remediation")
                 or info.get("fix")
                 or v.get("remediation")
@@ -127,15 +107,60 @@ def _scan_worker(args: tuple) -> Dict[str, Any]:
                 "tags":        info.get("tags") or [],
                 "references":  info.get("reference") or [],
                 "cvss_score":  classification.get("cvss-score"),
+                "source":      v.get("source", "nuclei"),
             })
 
+        # ── MITRE ATT&CK Enrichment ──────────────────────────
+        update(82, "Mapping findings to MITRE ATT&CK")
+
+        try:
+            from backend.app.services.mitre import (
+                enrich_findings,
+                map_open_ports,
+                calculate_coverage,
+                generate_navigator_layer,
+            )
+
+            # Enrich scanner findings
+            enriched = enrich_findings(normalised)
+
+            # Also map open ports → ATT&CK
+            open_ports     = result.get("open_ports", [])
+            port_findings  = map_open_ports(open_ports)
+            all_findings   = enriched + port_findings
+
+            # Coverage stats
+            coverage       = calculate_coverage(all_findings)
+
+            # Navigator layer
+            nav_layer = generate_navigator_layer(
+                all_findings,
+                scan_name  = f"SamSec — {target_url}",
+                target_url = target_url,
+            )
+            nav_path = outdir / "mitre_layer.json"
+            nav_path.write_text(json.dumps(nav_layer, indent=2))
+
+            mitre_data = {
+                "coverage":         coverage,
+                "navigator_layer":  nav_layer,
+                "has_mitre":        True,
+            }
+            print(f"[PID {pid}] 🎯 MITRE: {coverage['total_techniques_covered']} techniques / "
+                  f"{coverage['total_tactics_covered']} tactics")
+
+        except Exception as mitre_exc:
+            print(f"[PID {pid}] ⚠️  MITRE enrichment failed: {mitre_exc}")
+            all_findings = normalised
+            mitre_data   = {"has_mitre": False, "error": str(mitre_exc)}
+
+        # ── Severity recount ─────────────────────────────────
         update(90, "Building report")
 
-        # ── Recount severity ──
         summary: Dict[str, int] = {s: 0 for s in ("Critical", "High", "Medium", "Low", "Info")}
-        for nv in normalised:
-            sev = nv["severity"]
-            summary[sev] = summary.get(sev, 0) + 1
+        for nv in all_findings:
+            sev            = nv.get("severity", "Info")
+            summary[sev]   = summary.get(sev, 0) + 1
 
         report = {
             "scan_id":         scan_id,
@@ -146,13 +171,15 @@ def _scan_worker(args: tuple) -> Dict[str, Any]:
             "alive_hosts":     result.get("alive_hosts", []),
             "open_ports":      result.get("open_ports", []),
             "dns_data":        result.get("dns_data", {}),
-            "vulnerabilities": normalised,
+            "technologies":    result.get("technologies", []),
+            "vulnerabilities": all_findings,
             "summary":         summary,
             "critical_count":  summary["Critical"],
             "high_count":      summary["High"],
             "medium_count":    summary["Medium"],
             "low_count":       summary["Low"],
             "info_count":      summary["Info"],
+            "mitre":           mitre_data,
         }
 
         with open(outdir / "report.json", "w") as f:
@@ -198,27 +225,21 @@ def run_parallel_pipeline(
     shared_status: Dict,
     max_workers: int = MAX_WORKERS,
 ) -> List[Dict[str, Any]]:
-    """Fan out all jobs across a multiprocessing Pool."""
     if not jobs:
         return []
-
-    args = [(j["scan_id"], j["target_url"], shared_status) for j in jobs]
+    args             = [(j["scan_id"], j["target_url"], shared_status) for j in jobs]
     effective_workers = min(max_workers, len(jobs))
-
     print(f"\n🔁 Pipeline: {len(jobs)} assets | {effective_workers} workers")
-
     with Pool(processes=effective_workers) as pool:
         results = pool.map(_scan_worker, args, chunksize=1)
-
     return results
 
 
 def run_single_scan_in_process(
-    scan_id: str,
-    target_url: str,
+    scan_id:       str,
+    target_url:    str,
     shared_status: Dict,
 ) -> None:
-    """Run a single asset scan in the current thread (called from BackgroundTasks)."""
     _scan_worker((scan_id, target_url, shared_status))
 
 
