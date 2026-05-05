@@ -5,7 +5,8 @@ import { useState } from "react";
 import AuthModal from "../modals/AuthModal";
 import ForgotPasswordModal from "../modals/ForgotPasswordModal";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+// Added Activity for Packet Analyzer and ShieldAlert for MITRE
+import { Menu, ShieldAlert, Activity } from "lucide-react"; 
 
 export default function Navbar() {
     const [authOpen, setAuthOpen] = useState(false);
@@ -47,6 +48,7 @@ export default function Navbar() {
                             ["Home",       "/"],
                             ["Dashboard",  "/dashboard"],
                             ["New Scan",   "/new-scan"],
+                            ["Packet Analyzer", "/packet-analyzer"], // <-- RESTORED LINK HERE
                             ["Reports",    "/reports"],
                             ["MITRE ATT&CK", "/mitre"],
                             ["Account",    "/account"],
@@ -54,17 +56,16 @@ export default function Navbar() {
                             <Link
                                 key={label}
                                 href={href}
-                                className={`
-                                    text-sm font-medium transition-colors duration-200
-                                    ${label === "MITRE ATT&CK"
-                                        ? "text-violet-400 hover:text-violet-300"
-                                        : "text-slate-300 hover:text-[var(--samsec-aqua)]"
-                                    }
-                                `}
+                            
                             >
                                 {label === "MITRE ATT&CK" ? (
                                     <span className="flex items-center gap-1.5">
-                                        <span className="text-xs">🛡️</span>
+                                       
+                                        {label}
+                                    </span>
+                                ) : label === "Packet Analyzer" ? (
+                                    <span className="flex items-center gap-1.5">
+                                       
                                         {label}
                                     </span>
                                 ) : label}

@@ -20,9 +20,6 @@ from backend.app.services.pipeline import (
     run_single_scan_in_process,
 )
 
-from backend.app.api.mitre_routes import router as mitre_router
-app.include_router(mitre_router)
-
 
 # ─────────────────────────────────────────────
 #  App
@@ -42,6 +39,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from backend.app.api.mitre_routes import router as mitre_router
+app.include_router(mitre_router)
 
 # ─────────────────────────────────────────────
 #  Paths

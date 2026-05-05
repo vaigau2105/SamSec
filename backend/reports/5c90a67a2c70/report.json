@@ -1,0 +1,1178 @@
+{
+    "scan_id": "5c90a67a2c70",
+    "target_url": "https://owasp.org/www-project-webgoat/",
+    "scan_date": "2026-04-29T09:42:01.019398",
+    "status": "Completed",
+    "subdomains": [
+        "owasp.org/www-project-webgoat"
+    ],
+    "alive_hosts": [
+        "owasp.org/www-project-webgoat"
+    ],
+    "open_ports": [
+        {
+            "host": "172.66.157.115",
+            "port": 80,
+            "service": ""
+        },
+        {
+            "host": "172.66.157.115",
+            "port": 8080,
+            "service": ""
+        }
+    ],
+    "dns_data": {
+        "domain": "owasp.org/www-project-webgoat",
+        "root_dns": {
+            "A": [],
+            "AAAA": [],
+            "NS": [],
+            "MX": [],
+            "TXT": [],
+            "CNAME": []
+        },
+        "subdomains_found": 0,
+        "subdomains": [],
+        "resolved_records": {}
+    },
+    "technologies": [],
+    "vulnerabilities": [
+        {
+            "name": "Missing Security Header: x-xss-protection",
+            "severity": "Low",
+            "description": "The HTTP response is missing the x-xss-protection security header.",
+            "cve_ids": [],
+            "remediation": "Configure your web server to send the x-xss-protection header.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "fingerprint",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: xss"
+                }
+            ]
+        },
+        {
+            "name": "TLS Version - Detect",
+            "severity": "Info",
+            "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "low",
+                    "match_reason": "Keyword match: ssl"
+                }
+            ]
+        },
+        {
+            "name": "Content-Security-Policy \"script-src\" Wildcard Detected",
+            "severity": "Info",
+            "description": "Detected a wildcard (*) within the script-src directive of the Content-Security-Policy. This allowed scripts to load from any origin, weakening the CSP and increasing XSS risk.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: xss"
+                }
+            ]
+        },
+        {
+            "name": "Weak Content Security Policy - Detect",
+            "severity": "Info",
+            "description": "Detected misconfigured CSP directives containing unsafe and overly permissive keywords that weakened resource loading restrictions. This configuration allowed high-risk script behaviors, resulting in reduced protection against XSS attacks.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: xss"
+                },
+                {
+                    "technique_id": "T1059",
+                    "technique_name": "Command and Scripting Interpreter",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: command injection"
+                }
+            ]
+        },
+        {
+            "name": "Missing Subresource Integrity",
+            "severity": "Info",
+            "description": "Checks if external script and stylesheet tags in the HTML response are missing the Subresource Integrity (SRI) attribute.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059",
+                    "technique_name": "Command and Scripting Interpreter",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: command injection"
+                }
+            ]
+        },
+        {
+            "name": "HTTP Missing Security Headers",
+            "severity": "Info",
+            "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": []
+        },
+        {
+            "name": "Fastly CDN Debug Headers Exposure",
+            "severity": "Info",
+            "description": "Detected Fastly CDN debug headers being exposed when the Fastly-Debug header was sent in a request.This exposure disclosed sensitive debugging information such as cache paths, TTL values, content digests, surrogate keys, and cache server identities, which could help attackers understand CDN configuration and cache behavior.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": []
+        },
+        {
+            "name": "Detect SSL Certificate Issuer",
+            "severity": "Info",
+            "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: ssl"
+                }
+            ]
+        },
+        {
+            "name": "SSL DNS Names",
+            "severity": "Info",
+            "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: ssl"
+                }
+            ]
+        },
+        {
+            "name": "Wildcard TLS Certificate",
+            "severity": "Info",
+            "description": "Checks a sites certificate to see if there are wildcard CN or SAN entries.\n",
+            "cve_ids": [],
+            "remediation": "Review for context.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "nuclei",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: ssl"
+                }
+            ]
+        },
+        {
+            "name": "Open Redirect",
+            "severity": "Medium",
+            "description": "Parameter 'redirect' causes redirect to external attacker-controlled URL.",
+            "cve_ids": [],
+            "remediation": "Validate redirect destinations against an allowlist of trusted URLs.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1566",
+                    "technique_name": "Phishing",
+                    "tactic": "initial-access",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: phishing"
+                }
+            ]
+        },
+        {
+            "name": "Open Redirect",
+            "severity": "Medium",
+            "description": "Parameter 'redirect' causes redirect to external attacker-controlled URL.",
+            "cve_ids": [],
+            "remediation": "Validate redirect destinations against an allowlist of trusted URLs.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1566",
+                    "technique_name": "Phishing",
+                    "tactic": "initial-access",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: phishing"
+                }
+            ]
+        },
+        {
+            "name": "Missing HSTS Header",
+            "severity": "Medium",
+            "description": "The Strict-Transport-Security header is not set, allowing downgrade attacks.",
+            "cve_ids": [],
+            "remediation": "Add: Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: missing hsts"
+                }
+            ]
+        },
+        {
+            "name": "Missing X-Content-Type-Options",
+            "severity": "Low",
+            "description": "Browser may MIME-sniff responses, enabling content injection.",
+            "cve_ids": [],
+            "remediation": "Add: X-Content-Type-Options: nosniff",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": []
+        },
+        {
+            "name": "Missing Content-Security-Policy",
+            "severity": "Medium",
+            "description": "No CSP header detected, increasing XSS attack surface.",
+            "cve_ids": [],
+            "remediation": "Implement a restrictive Content-Security-Policy header.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: xss"
+                }
+            ]
+        },
+        {
+            "name": "Open Redirect",
+            "severity": "Medium",
+            "description": "Parameter 'redirect' causes redirect to external attacker-controlled URL.",
+            "cve_ids": [],
+            "remediation": "Validate redirect destinations against an allowlist of trusted URLs.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1566",
+                    "technique_name": "Phishing",
+                    "tactic": "initial-access",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: phishing"
+                }
+            ]
+        },
+        {
+            "name": "Missing HSTS Header",
+            "severity": "Medium",
+            "description": "The Strict-Transport-Security header is not set, allowing downgrade attacks.",
+            "cve_ids": [],
+            "remediation": "Add: Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: missing hsts"
+                }
+            ]
+        },
+        {
+            "name": "Missing X-Frame-Options",
+            "severity": "Medium",
+            "description": "Page can be embedded in iframes, enabling clickjacking attacks.",
+            "cve_ids": [],
+            "remediation": "Add: X-Frame-Options: DENY or SAMEORIGIN",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1185",
+                    "technique_name": "Browser Session Hijacking",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: missing x-frame-options"
+                }
+            ]
+        },
+        {
+            "name": "Missing X-Content-Type-Options",
+            "severity": "Low",
+            "description": "Browser may MIME-sniff responses, enabling content injection.",
+            "cve_ids": [],
+            "remediation": "Add: X-Content-Type-Options: nosniff",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": []
+        },
+        {
+            "name": "Missing Content-Security-Policy",
+            "severity": "Medium",
+            "description": "No CSP header detected, increasing XSS attack surface.",
+            "cve_ids": [],
+            "remediation": "Implement a restrictive Content-Security-Policy header.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: xss"
+                }
+            ]
+        },
+        {
+            "name": "Missing Referrer-Policy",
+            "severity": "Low",
+            "description": "Browser may leak URL data in Referer headers.",
+            "cve_ids": [],
+            "remediation": "Add: Referrer-Policy: strict-origin-when-cross-origin",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1048",
+                    "technique_name": "Exfiltration Over Alternative Protocol",
+                    "tactic": "exfiltration",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: data exposure"
+                }
+            ]
+        },
+        {
+            "name": "Open Redirect",
+            "severity": "Medium",
+            "description": "Parameter 'redirect' causes redirect to external attacker-controlled URL.",
+            "cve_ids": [],
+            "remediation": "Validate redirect destinations against an allowlist of trusted URLs.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1566",
+                    "technique_name": "Phishing",
+                    "tactic": "initial-access",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: phishing"
+                }
+            ]
+        },
+        {
+            "name": "Missing HSTS Header",
+            "severity": "Medium",
+            "description": "The Strict-Transport-Security header is not set, allowing downgrade attacks.",
+            "cve_ids": [],
+            "remediation": "Add: Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: missing hsts"
+                }
+            ]
+        },
+        {
+            "name": "Missing X-Frame-Options",
+            "severity": "Medium",
+            "description": "Page can be embedded in iframes, enabling clickjacking attacks.",
+            "cve_ids": [],
+            "remediation": "Add: X-Frame-Options: DENY or SAMEORIGIN",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1185",
+                    "technique_name": "Browser Session Hijacking",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: missing x-frame-options"
+                }
+            ]
+        },
+        {
+            "name": "Missing X-Content-Type-Options",
+            "severity": "Low",
+            "description": "Browser may MIME-sniff responses, enabling content injection.",
+            "cve_ids": [],
+            "remediation": "Add: X-Content-Type-Options: nosniff",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": []
+        },
+        {
+            "name": "Missing Content-Security-Policy",
+            "severity": "Medium",
+            "description": "No CSP header detected, increasing XSS attack surface.",
+            "cve_ids": [],
+            "remediation": "Implement a restrictive Content-Security-Policy header.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: xss"
+                }
+            ]
+        },
+        {
+            "name": "Missing Referrer-Policy",
+            "severity": "Low",
+            "description": "Browser may leak URL data in Referer headers.",
+            "cve_ids": [],
+            "remediation": "Add: Referrer-Policy: strict-origin-when-cross-origin",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1048",
+                    "technique_name": "Exfiltration Over Alternative Protocol",
+                    "tactic": "exfiltration",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: data exposure"
+                }
+            ]
+        },
+        {
+            "name": "Open Redirect",
+            "severity": "Medium",
+            "description": "Parameter 'redirect' causes redirect to external attacker-controlled URL.",
+            "cve_ids": [],
+            "remediation": "Validate redirect destinations against an allowlist of trusted URLs.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1566",
+                    "technique_name": "Phishing",
+                    "tactic": "initial-access",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: phishing"
+                }
+            ]
+        },
+        {
+            "name": "Missing HSTS Header",
+            "severity": "Medium",
+            "description": "The Strict-Transport-Security header is not set, allowing downgrade attacks.",
+            "cve_ids": [],
+            "remediation": "Add: Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: missing hsts"
+                }
+            ]
+        },
+        {
+            "name": "Missing Content-Security-Policy",
+            "severity": "Medium",
+            "description": "No CSP header detected, increasing XSS attack surface.",
+            "cve_ids": [],
+            "remediation": "Implement a restrictive Content-Security-Policy header.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: xss"
+                }
+            ]
+        },
+        {
+            "name": "Missing Referrer-Policy",
+            "severity": "Low",
+            "description": "Browser may leak URL data in Referer headers.",
+            "cve_ids": [],
+            "remediation": "Add: Referrer-Policy: strict-origin-when-cross-origin",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1048",
+                    "technique_name": "Exfiltration Over Alternative Protocol",
+                    "tactic": "exfiltration",
+                    "confidence": "medium",
+                    "match_reason": "Keyword match: data exposure"
+                }
+            ]
+        },
+        {
+            "name": "CORS Wildcard",
+            "severity": "Medium",
+            "description": "Access-Control-Allow-Origin: * allows any origin to read responses.",
+            "cve_ids": [],
+            "remediation": "Restrict CORS to trusted origins. Never use wildcard with credentials.",
+            "target": "https://owasp.org/www-project-webgoat/",
+            "template_id": "",
+            "tags": [],
+            "references": [],
+            "cvss_score": null,
+            "source": "active-scanner",
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1557",
+                    "technique_name": "Adversary-in-the-Middle",
+                    "tactic": "collection",
+                    "confidence": "high",
+                    "match_reason": "Keyword match: cors"
+                }
+            ]
+        },
+        {
+            "name": "Exposed Service on Port 80",
+            "severity": "Info",
+            "target": "172.66.157.115",
+            "description": "Port 80 () is open and may be exploited.",
+            "cve_ids": [],
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1190",
+                    "technique_name": "Exploit Public-Facing App",
+                    "tactic": "initial-access",
+                    "confidence": "medium",
+                    "match_reason": "Open port 80"
+                }
+            ]
+        },
+        {
+            "name": "Exposed Service on Port 8080",
+            "severity": "Info",
+            "target": "172.66.157.115",
+            "description": "Port 8080 () is open and may be exploited.",
+            "cve_ids": [],
+            "mitre_techniques": [
+                {
+                    "technique_id": "T1190",
+                    "technique_name": "Exploit Public-Facing App",
+                    "tactic": "initial-access",
+                    "confidence": "medium",
+                    "match_reason": "Open port 8080"
+                }
+            ]
+        }
+    ],
+    "summary": {
+        "Critical": 0,
+        "High": 0,
+        "Medium": 16,
+        "Low": 7,
+        "Info": 11
+    },
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 16,
+    "low_count": 7,
+    "info_count": 11,
+    "mitre": {
+        "coverage": {
+            "total_techniques_covered": 8,
+            "total_tactics_covered": 4,
+            "total_tactics": 14,
+            "coverage_pct": 100.0,
+            "tactic_summary": [
+                {
+                    "tactic": "reconnaissance",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "resource-development",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "initial-access",
+                    "technique_count": 2,
+                    "technique_ids": [
+                        "T1566",
+                        "T1190"
+                    ]
+                },
+                {
+                    "tactic": "execution",
+                    "technique_count": 2,
+                    "technique_ids": [
+                        "T1059.007",
+                        "T1059"
+                    ]
+                },
+                {
+                    "tactic": "persistence",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "privilege-escalation",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "defense-evasion",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "credential-access",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "discovery",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "lateral-movement",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "collection",
+                    "technique_count": 3,
+                    "technique_ids": [
+                        "T1557.002",
+                        "T1185",
+                        "T1557"
+                    ]
+                },
+                {
+                    "tactic": "command-and-control",
+                    "technique_count": 0,
+                    "technique_ids": []
+                },
+                {
+                    "tactic": "exfiltration",
+                    "technique_count": 1,
+                    "technique_ids": [
+                        "T1048"
+                    ]
+                },
+                {
+                    "tactic": "impact",
+                    "technique_count": 0,
+                    "technique_ids": []
+                }
+            ],
+            "technique_hits": [
+                {
+                    "technique_id": "T1059.007",
+                    "technique_name": "JavaScript",
+                    "tactic": "execution",
+                    "count": 7,
+                    "max_score": 55,
+                    "max_severity": "medium",
+                    "findings": [
+                        "Missing Security Header: x-xss-protection",
+                        "Content-Security-Policy \"script-src\" Wildcard Detected",
+                        "Weak Content Security Policy - Detect",
+                        "Missing Content-Security-Policy",
+                        "Missing Content-Security-Policy",
+                        "Missing Content-Security-Policy",
+                        "Missing Content-Security-Policy"
+                    ],
+                    "confidence": "high"
+                },
+                {
+                    "technique_id": "T1557.002",
+                    "technique_name": "ARP Cache Poisoning",
+                    "tactic": "collection",
+                    "count": 8,
+                    "max_score": 55,
+                    "max_severity": "medium",
+                    "findings": [
+                        "TLS Version - Detect",
+                        "Detect SSL Certificate Issuer",
+                        "SSL DNS Names",
+                        "Wildcard TLS Certificate",
+                        "Missing HSTS Header",
+                        "Missing HSTS Header",
+                        "Missing HSTS Header",
+                        "Missing HSTS Header"
+                    ],
+                    "confidence": "low"
+                },
+                {
+                    "technique_id": "T1059",
+                    "technique_name": "Command and Scripting Interpreter",
+                    "tactic": "execution",
+                    "count": 2,
+                    "max_score": 10,
+                    "max_severity": "info",
+                    "findings": [
+                        "Weak Content Security Policy - Detect",
+                        "Missing Subresource Integrity"
+                    ],
+                    "confidence": "high"
+                },
+                {
+                    "technique_id": "T1566",
+                    "technique_name": "Phishing",
+                    "tactic": "initial-access",
+                    "count": 5,
+                    "max_score": 55,
+                    "max_severity": "medium",
+                    "findings": [
+                        "Open Redirect",
+                        "Open Redirect",
+                        "Open Redirect",
+                        "Open Redirect",
+                        "Open Redirect"
+                    ],
+                    "confidence": "medium"
+                },
+                {
+                    "technique_id": "T1185",
+                    "technique_name": "Browser Session Hijacking",
+                    "tactic": "collection",
+                    "count": 2,
+                    "max_score": 55,
+                    "max_severity": "medium",
+                    "findings": [
+                        "Missing X-Frame-Options",
+                        "Missing X-Frame-Options"
+                    ],
+                    "confidence": "high"
+                },
+                {
+                    "technique_id": "T1048",
+                    "technique_name": "Exfiltration Over Alternative Protocol",
+                    "tactic": "exfiltration",
+                    "count": 3,
+                    "max_score": 30,
+                    "max_severity": "low",
+                    "findings": [
+                        "Missing Referrer-Policy",
+                        "Missing Referrer-Policy",
+                        "Missing Referrer-Policy"
+                    ],
+                    "confidence": "medium"
+                },
+                {
+                    "technique_id": "T1557",
+                    "technique_name": "Adversary-in-the-Middle",
+                    "tactic": "collection",
+                    "count": 1,
+                    "max_score": 55,
+                    "max_severity": "medium",
+                    "findings": [
+                        "CORS Wildcard"
+                    ],
+                    "confidence": "high"
+                },
+                {
+                    "technique_id": "T1190",
+                    "technique_name": "Exploit Public-Facing App",
+                    "tactic": "initial-access",
+                    "count": 2,
+                    "max_score": 10,
+                    "max_severity": "info",
+                    "findings": [
+                        "Exposed Service on Port 80",
+                        "Exposed Service on Port 8080"
+                    ],
+                    "confidence": "medium"
+                }
+            ]
+        },
+        "navigator_layer": {
+            "name": "SamSec \u2014 https://owasp.org/www-project-webgoat/",
+            "versions": {
+                "attack": "14",
+                "navigator": "4.9",
+                "layer": "4.5"
+            },
+            "domain": "enterprise-attack",
+            "description": "Generated by SamSec \u2014 34 findings \u2192 8 ATT&CK techniques mapped. Target: https://owasp.org/www-project-webgoat/",
+            "filters": {
+                "platforms": [
+                    "Linux",
+                    "Windows",
+                    "macOS",
+                    "Network",
+                    "Containers",
+                    "PRE"
+                ]
+            },
+            "sorting": 3,
+            "layout": {
+                "layout": "side",
+                "aggregateFunction": "max",
+                "showID": true,
+                "showName": true,
+                "showAggregateScores": true,
+                "countUnscored": false
+            },
+            "hideDisabled": false,
+            "gradient": {
+                "colors": [
+                    "#1e293b",
+                    "#fbbf24",
+                    "#ef4444"
+                ],
+                "minValue": 0,
+                "maxValue": 100
+            },
+            "legendItems": [
+                {
+                    "color": "#ef4444",
+                    "label": "Critical"
+                },
+                {
+                    "color": "#f97316",
+                    "label": "High"
+                },
+                {
+                    "color": "#eab308",
+                    "label": "Medium"
+                },
+                {
+                    "color": "#3b82f6",
+                    "label": "Low"
+                },
+                {
+                    "color": "#94a3b8",
+                    "label": "Info"
+                }
+            ],
+            "techniques": [
+                {
+                    "techniqueID": "T1059.007",
+                    "score": 55,
+                    "color": "#eab308",
+                    "comment": "[MEDIUM] Missing Security Header: x-xss-protection, Content-Security-Policy \"script-src\" Wildcard Detected, Weak Content Security Policy - Detect, Missing Content-Security-Policy",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                },
+                {
+                    "techniqueID": "T1557.002",
+                    "score": 55,
+                    "color": "#eab308",
+                    "comment": "[MEDIUM] TLS Version - Detect, Detect SSL Certificate Issuer, SSL DNS Names, Wildcard TLS Certificate, Missing HSTS Header",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                },
+                {
+                    "techniqueID": "T1059",
+                    "score": 10,
+                    "color": "#94a3b8",
+                    "comment": "[INFO] Weak Content Security Policy - Detect, Missing Subresource Integrity",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                },
+                {
+                    "techniqueID": "T1566",
+                    "score": 55,
+                    "color": "#eab308",
+                    "comment": "[MEDIUM] Open Redirect",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                },
+                {
+                    "techniqueID": "T1185",
+                    "score": 55,
+                    "color": "#eab308",
+                    "comment": "[MEDIUM] Missing X-Frame-Options",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                },
+                {
+                    "techniqueID": "T1048",
+                    "score": 30,
+                    "color": "#3b82f6",
+                    "comment": "[LOW] Missing Referrer-Policy",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                },
+                {
+                    "techniqueID": "T1557",
+                    "score": 55,
+                    "color": "#eab308",
+                    "comment": "[MEDIUM] CORS Wildcard",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                },
+                {
+                    "techniqueID": "T1190",
+                    "score": 10,
+                    "color": "#94a3b8",
+                    "comment": "[INFO] Exposed Service on Port 80, Exposed Service on Port 8080",
+                    "enabled": true,
+                    "metadata": [
+                        {
+                            "name": "tool",
+                            "value": "SamSec"
+                        },
+                        {
+                            "name": "target",
+                            "value": "https://owasp.org/www-project-webgoat/"
+                        }
+                    ]
+                }
+            ],
+            "metadata": [
+                {
+                    "name": "generated_by",
+                    "value": "SamSec"
+                },
+                {
+                    "name": "target",
+                    "value": "https://owasp.org/www-project-webgoat/"
+                }
+            ]
+        },
+        "has_mitre": true
+    }
+}

@@ -13,6 +13,7 @@ export interface ScanSummary {
     medium?: number;
     low?: number;
     info?: number;
+    [key: string]: number | undefined; // Allows case-insensitive lookups
 }
 
 export interface ScanData {
@@ -46,28 +47,43 @@ const api = {
 };
 
 // ─── Severity helpers ─────────────────────────────────────────────────────────
+
+// Safely gets counts whether the backend sends "High", "high", or "HIGH"
+const getCount = (summary: ScanSummary | undefined, key: string): number => {
+    if (!summary) return 0;
+    const lower = key.toLowerCase();
+    const title = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
+    const upper = key.toUpperCase();
+    return (summary[lower] ?? 0) + (summary[title] ?? 0) + (summary[upper] ?? 0);
+};
+
+// Determines the single highest severity label for a target
+function getScanSeverityLabel(scan: ScanData): string | null {
+    const s = scan.summary || {};
+    
+    if (getCount(s, "critical") > 0) return "critical";
+    if (getCount(s, "high") > 0) return "high";
+    if (getCount(s, "medium") > 0) return "medium";
+    
+    // Only mark it as low/clean if the scan has finished
+    if (scan.status === "Completed") return "low";
+    
+    return null; 
+}
+
+// Counts the NUMBER OF TARGETS in each bucket, not total vulnerabilities
 function getSeverityTotals(scans: ScanData[]) {
     let critical = 0, high = 0, medium = 0, low = 0;
     if (!Array.isArray(scans)) return { critical, high, medium, low }; 
 
     for (const scan of scans) {
-        const s = scan.summary || {};
-        // Explicitly separating Critical from High
-        critical += s.critical ?? 0;
-        high     += s.high ?? 0;
-        medium   += s.medium ?? 0;
-        low      += (s.low ?? 0) + (s.info ?? 0);
+        const label = getScanSeverityLabel(scan);
+        if (label === "critical") critical++;
+        else if (label === "high") high++;
+        else if (label === "medium") medium++;
+        else if (label === "low") low++;
     }
     return { critical, high, medium, low };
-}
-
-function getScanSeverityLabel(scan: ScanData): string | null {
-    const s = scan.summary || {};
-    if ((s.critical ?? 0) > 0) return "critical";
-    if ((s.high ?? 0) > 0) return "high";
-    if ((s.medium ?? 0) > 0) return "medium";
-    if (scan.status === "Completed") return "low";
-    return null;
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────
@@ -97,7 +113,7 @@ function StatusBadge({ status }: { status: string }) {
 function SeverityBadge({ label }: { label: string | null }) {
     if (!label) return <span className="text-slate-600 text-sm">—</span>;
     const styles: Record<string, string> = {
-        critical: "bg-purple-500/10 text-purple-400 border border-purple-500/20", // Added Critical Style
+        critical: "bg-purple-500/10 text-purple-400 border border-purple-500/20",
         high:     "bg-red-500/10 text-red-400 border border-red-500/20",
         medium:   "bg-yellow-400/10 text-yellow-300 border border-yellow-400/20",
         low:      "bg-green-500/10 text-green-400 border border-green-500/20",
@@ -220,7 +236,6 @@ export default function DashboardPage() {
         window.location.href = `/reports?scanId=${scanId}`;
     };
 
-    // Destructure all 4 severity levels
     const { critical, high, medium, low } = getSeverityTotals(scans);
 
     return (
@@ -265,10 +280,8 @@ export default function DashboardPage() {
                 </div>
             )}
 
-            {/* Now uses a 4-column grid (md:grid-cols-4) to display all severities clearly */}
             <div className="page-container mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                 
-                {/* Critical Severity Card */}
                 <div className="app-card p-6 border border-purple-500/20 shadow-[0_0_10px_rgba(168,85,247,0.1)]">
                     <h3 className="font-semibold flex items-center gap-2 text-purple-400"><span>☢️</span> Critical</h3>
                     <p className={critical > 0 ? "text-4xl font-bold text-purple-400 mt-3" : "text-slate-400 mt-3"}>
